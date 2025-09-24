@@ -4,30 +4,40 @@
   <meta charset="UTF-8">
   <meta name="author" content="Бацура Богдана, група 241">
   <title>Новини компанії</title>
+  <style type="text/css" media="screen">
+    .highlight { background-color: rgb(144, 192, 238); }
+    .discount { color: red; font-weight: bold; }
+    .aside-style { font-style: italic; }
+  </style>
 </head>
 <body>
   <header>
-    <h3 style="color:rgb(133, 185, 244);" dir="ltr" align="center">Новини компанії "CyberNest"</h3>
+    <h1 style="color:rgb(133, 185, 244);" dir="ltr" align="center">Новини компанії "CyberNest"</h1>
     <nav>
-      <a href="author.html">Автор</a> |
-      <a href="company.html">Компанія</a> |
-      <a href="news.html">Новини</a>
+      <a href="author.html" tabindex="1" onblur="alert('Вийшли з посилання автор');">Автор</a> |
+      <a href="company.html" tabindex="2" onblur="alert('Вийшли з посилання компанія');">Компанія</a> |
+      <a href="news.html" tabindex="3" onblur="alert('Вийшли з посилання новини');">Новини</a>
     </nav>
-    <hr width="80%" size="3" align="center">
+    <hr width="100%" size="3" align="center">
+    <img src="logo.jpeg" width="200" hspace="10" vspace="5" id="logo" class="logo">
   </header>
 
   <main>
-    <h4 align="left" style="color:rgb(4, 4, 100);" title="Актуальні новини">Останні новини</h4>
+    <h3 align="left" style="color:rgb(91, 119, 222);" title="Актуальні новини" lang="ua">Останні новини</h3>
 
-    <article>
-      <h5 title="Акція" align="center" id="n1">Знижки на ігрові ПК!</h5>
+    <article class="news-article">
+      <h4 title="Акція" align="left" id="n1">Знижки на ігрові ПК!</h4>
       <p style="font-size:14px;" dir="ltr" align="justify">
         З 1 вересня стартує акція – знижки до <b>20%</b> на всі ігрові комп’ютери серії Gaming.
         <br title="перенос" class="line1" style="margin:10px;">
-        <strike id="strike1" title="Стара ціна" lang="uk">50 000 грн</strike> 
+        <strike id="strike1" title="Стара ціна" lang="ua">50 000 грн</strike> 
         ➝ <s dir="ltr" class="discount" style="color:red;">40 000 грн</s>
       </p>
-    </article>
+      <mark class="highlight" style="background-color: rgb(144, 192, 238);">Тільки цього місяця!</mark>
+      <ins id="ins1">Деталі акції</ins>
+      <sub lang="uk">Додатково</sub>
+      <sup id="sup1" class="highlight" lang="uk">Нове</sup>
+
 
     <article>
       <h5 title="Поставка" align="left" id="n2">Нова поставка відеокарт NVIDIA</h5>
@@ -36,10 +46,11 @@
         <br title="новий рядок" class="line2" style="margin:5px;">
         Замовляйте в нашому магазині за спеціальними цінами!
       </p>
+      <bdo dir="rtl">Це текст з RTL-направленням</bdo>
     </article>
 
     <article>
-      <h5 title="Сервісний центр" align="right" id="n3">CyberNest відкриває сервісний центр</h5>
+      <h5 title="Сервісний центр" align="center" id="n3">CyberNest відкриває сервісний центр</h5>
       <p style="font-style:italic;" dir="ltr" align="center">
         У жовтні відкривається новий сервісний центр для обслуговування наших клієнтів.
       </p>
