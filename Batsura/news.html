@@ -1,65 +1,59 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="Бацура Богдана, група 241">
   <title>Новини компанії</title>
-  <style type="text/css" media="screen">
-    .highlight { background-color: rgb(144, 192, 238); }
-    .discount { color: red; font-weight: bold; }
-    .aside-style { font-style: italic; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header>
-    <h1 style="color:rgb(133, 185, 244);" dir="ltr" align="center">Новини компанії "CyberNest"</h1>
+    <h1>Новини компанії "CyberNest"</h1>
     <nav>
-      <a href="author.html" tabindex="1" onblur="alert('Вийшли з посилання автор');">Автор</a> |
-      <a href="company.html" tabindex="2" onblur="alert('Вийшли з посилання компанія');">Компанія</a> |
-      <a href="news.html" tabindex="3" onblur="alert('Вийшли з посилання новини');">Новини</a>
+      <a href="author.html">Автор</a>
+      <a href="company.html">Компанія</a>
+      <a href="news.html" class="active">Новини</a>
     </nav>
-    <hr width="100%" size="3" align="center">
-    <img src="logo.jpeg" width="200" hspace="10" vspace="5" id="logo" class="logo">
+    <hr>
+    <img src="logo.jpeg" alt="Логотип компанії" class="logo">
   </header>
 
   <main>
-    <h3 align="left" style="color:rgb(91, 119, 222);" title="Актуальні новини" lang="ua">Останні новини</h3>
+    <section class="news-section">
+      <h3>Останні новини</h3>
 
-    <article class="news-article">
-      <h4 title="Акція" align="left" id="n1">Знижки на ігрові ПК!</h4>
-      <p style="font-size:14px;" dir="ltr" align="justify">
-        З 1 вересня стартує акція – знижки до <b>20%</b> на всі ігрові комп’ютери серії Gaming.
-        <br title="перенос" class="line1" style="margin:10px;">
-        <strike id="strike1" title="Стара ціна" lang="ua">50 000 грн</strike> 
-        ➝ <s dir="ltr" class="discount" style="color:red;">40 000 грн</s>
-      </p>
-      <mark class="highlight" style="background-color: rgb(144, 192, 238);">Тільки цього місяця!</mark>
-      <ins id="ins1">Деталі акції</ins>
-      <sub lang="uk">Додатково</sub>
-      <sup id="sup1" class="highlight" lang="ua">Нове</sup>
+      <article class="news-item highlight">
+        <h4>Знижки на ігрові ПК!</h4>
+        <p>
+          З 1 вересня стартує акція – знижки до <b>20%</b> на всі ігрові комп’ютери серії Gaming. <br>
+          <strike title="Стара ціна">50 000 грн</strike> ➝ <span class="discount">40 000 грн</span>
+        </p>
+        <mark>Тільки цього місяця!</mark>
+        <p><ins>Деталі акції</ins> <sub>Додатково</sub> <sup class="new">Нове</sup></p>
+      </article>
 
+      <article class="news-item">
+        <h5>Нова поставка відеокарт NVIDIA</h5>
+        <p>
+          Ми отримали нову партію <i>RTX 4090</i>. <br>
+          Замовляйте в нашому магазині за спеціальними цінами!
+        </p>
+      </article>
 
-    <article>
-      <h5 title="Поставка" align="left" id="n2">Нова поставка відеокарт NVIDIA</h5>
-      <p style="color:darkslategray;" dir="ltr" align="left">
-        Ми отримали нову партію <i>RTX 4090</i>.
-        <br title="новий рядок" class="line2" style="margin:5px;">
-        Замовляйте в нашому магазині за спеціальними цінами!
-      </p>
-      <bdo dir="rtl">Це текст з RTL-направленням</bdo>
-    </article>
-
-    <article>
-      <h5 title="Сервісний центр" align="center" id="n3">CyberNest відкриває сервісний центр</h5>
-      <p style="font-style:italic;" dir="ltr" align="center">
-        У жовтні відкривається новий сервісний центр для обслуговування наших клієнтів.
-      </p>
-    </article>
+      <article class="news-item italic">
+        <h5>CyberNest відкриває сервісний центр</h5>
+        <p>
+          У жовтні відкривається новий сервісний центр для обслуговування наших клієнтів.
+        </p>
+      </article>
+    </section>
   </main>
 
   <footer>
-    <hr width="90%" size="2" align="center">
-    <p style="text-align:center;" dir="ltr" align="center">&copy; 2025. Розробила студентка Бацура Богдана</p>
+    <hr>
+    <p>&copy; 2025. Розробила студентка Бацура Богдана</p>
   </footer>
+
 </body>
 </html>
