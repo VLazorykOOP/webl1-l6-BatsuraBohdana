@@ -30,11 +30,29 @@ nav a {
   border: 1px solid #86b6f4;
   border-radius: 4px;
   display: inline-block;
+  
+  /* --- ДОДАНО --- */
+  /* Плавний перехід для ефектів :hover та :focus */
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
 }
 
-/* Блок nav a:hover було видалено, 
-  щоб прибрати анімацію при наведенні 
+/* --- ДОДАНО ПСЕВДОКЛАСИ :hover, :focus, :active --- */
+
+/* :hover (стан при наведенні миші)
+  :focus (стан при виборі елемента, напр. клавішею Tab)
+  Групуємо їх, щоб ефект був однаковий.
 */
+nav a:hover,
+nav a:focus {
+  background-color: #86b6f4;
+  color: #0e0e0e;
+  outline: none; /* Прибираємо стандартну рамку фокусу */
+}
+
+/* :active (стан в момент натискання на елемент) */
+nav a:active {
+  transform: scale(0.95); /* Ефект "втискання" кнопки */
+}
 
 nav a.active {
   background-color: #3232a5;
@@ -102,6 +120,15 @@ figure figcaption {
   margin-bottom: 20px;
 }
 
+/* --- ДОДАНО ПСЕВДОКЛАС :last-child --- */
+/* :last-child (остання дитина)
+  Прибирає зайвий нижній відступ в останньої картки товару,
+  щоб вона не створювала подвійний відступ.
+*/
+.product:last-child {
+  margin-bottom: 0;
+}
+
 .product h4 {
   color: #a6c0ff;
   border-bottom: 1px solid #86b6f4;
@@ -116,6 +143,21 @@ figure figcaption {
 
 .product li {
   margin-bottom: 5px;
+  
+  /* --- ЗМІНЕНО --- */
+  /* Додамо трохи відступів, щоб фон виглядав краще */
+  padding: 4px;
+  border-radius: 3px;
+}
+
+/* --- ДОДАНО ПСЕВДОКЛАС :nth-child --- */
+/*
+  :nth-child(odd) (непарні елементи: 1, 3, 5...)
+  Створюємо ефект "зебри" для списку характеристик,
+  щоб його було легше читати.
+*/
+.product li:nth-child(odd) {
+  background-color: rgba(134, 182, 244, 0.05); /* Дуже легкий синій фон */
 }
 
 .ssd {
@@ -155,6 +197,16 @@ abbr[title] {
   padding: 15px 20px;
   border: 1px solid #86b6f4;
   border-radius: 6px;
+}
+
+/* --- ДОДАНО ПСЕВДОКЛАС :first-child --- */
+/*
+  :first-child (перша дитина)
+  Виділяємо першу новину у списку,
+  щоб привернути до неї увагу.
+*/
+.news-item:first-child {
+  border-left: 4px solid #a6c0ff; /* Додаємо акцентну лінію зліва */
 }
 
 .news-item h4,
