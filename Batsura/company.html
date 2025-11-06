@@ -1,77 +1,78 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="Бацура Богдана, група 241">
-  <title>Компанія</title>
+  <title>Компанія CyberNest</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header>
-    <h1 style="color:rgb(133, 185, 244);" dir="ltr" align="center">
-      Віртуальна компанія "CyberNest"
-    </h1>
+    <h1>Віртуальна компанія "CyberNest"</h1>
     <nav>
-      <a href="author.html">Автор</a> |
-      <a href="company.html">Компанія</a> |
+      <a href="menu.html">Головне Меню</a>
+      <a href="author.html">Автор</a>
+      <a href="company.html" class="active">Компанія</a>
       <a href="news.html">Новини</a>
     </nav>
-    <hr width="85%" size="3" align="center">
+    <hr>
   </header>
 
   <main>
-    <h4 align="left" style="color:rgb(4, 4, 100);" title="Опис компанії">Про компанію</h4>
-    <p style="font-size:14px;" dir="ltr" align="justify">
-      <b>"CyberNest"</b> – це сучасна ІТ-компанія, яка спеціалізується на продажу комп’ютерів 
-      різного рівня: від офісних моделей до потужних ігрових станцій.
-    </p>
-
-    <h3 title="Асортимент ПК" align="center" id="catalog">Асортимент комп’ютерів</h3>
-
-   
-    <section>
-      <h4><abbr title="Office Model">CompMaster Office</abbr></h4>
-      <p><dfn id="cpu1">Виробник процесора:</dfn> Intel</p>
-      <p><cite>Тактова частота</cite>: <code>3.2 GHz</code></p>
-      <p>Відеокарта: Intel UHD</p>
-      <p>ОЗП: 8 GB</p>
-      <p>Звукова карта: Realtek HD</p>
+    <section class="about-company">
+      <h3>Про компанію</h3>
       <p>
-        Вінчестер: 
-        <strike id="old1" title="Старий диск" lang="uk">1 TB HDD</strike>
-        ➝ <s dir="ltr" class="ssd" style="color:red;">512 GB SSD</s>
+        <b>"CyberNest"</b> – це сучасна ІТ-компанія, яка спеціалізується на продажу комп’ютерів 
+        різного рівня: від офісних моделей до потужних ігрових станцій.
       </p>
     </section>
 
-    
-    <section>
-      <h4><abbr title="Gaming Model">CompMaster Gaming</abbr></h4>
-      <p><dfn id="cpu2">Виробник процесора:</dfn> AMD Ryzen</p>
-      <p><cite>Тактова частота</cite>: <code>4.0 GHz</code></p>
-      <p>Відеокарта: NVIDIA RTX 4060</p>
-      <p>ОЗП: 16 GB</p>
-      <p>Звукова карта: Creative Sound Blaster</p>
-      <p>Вінчестер: 1 TB SSD</p>
-    </section>
+    <section class="catalog">
+      <h3 id="catalog">Асортимент комп’ютерів</h3>
 
-   
-    <section>
-      <h4><abbr title="Professional Model">CompMaster Pro</abbr></h4>
-      <p><dfn id="cpu3">Виробник процесора:</dfn> Intel i9</p>
-      <p><cite>Тактова частота</cite>: <code>5.2 GHz</code></p>
-      <p>Відеокарта: NVIDIA RTX 4090</p>
-      <p>ОЗП: 32 GB</p>
-      <p>Звукова карта: ASUS Xonar</p>
-      <p>Вінчестер: 2 TB SSD</p>
-    </section>
+      <div class="product">
+        <h4><abbr title="Office Model">CompMaster Office</abbr></h4>
+        <ul>
+          <li><dfn>Виробник процесора:</dfn> Intel</li>
+          <li><cite>Тактова частота</cite>: <code>3.2 GHz</code></li>
+          <li>Відеокарта: Intel UHD</li>
+          <li>ОЗП: 8 GB</li>
+          <li>Звукова карта: Realtek HD</li>
+          <li>Вінчестер: <strike title="Старий диск">1 TB HDD</strike> ➝ <span class="ssd">512 GB SSD</span></li>
+        </ul>
+      </div>
 
-    
+      <div class="product">
+        <h4><abbr title="Gaming Model">CompMaster Gaming</abbr></h4>
+        <ul>
+          <li><dfn>Виробник процесора:</dfn> AMD Ryzen</li>
+          <li><cite>Тактова частота</cite>: <code>4.0 GHz</code></li>
+          <li>Відеокарта: NVIDIA RTX 4060</li>
+          <li>ОЗП: 16 GB</li>
+          <li>Звукова карта: Creative Sound Blaster</li>
+          <li>Вінчестер: 1 TB SSD</li>
+        </ul>
+      </div>
+
+      <div class="product">
+        <h4><abbr title="Professional Model">CompMaster Pro</abbr></h4>
+        <ul>
+          <li><dfn>Виробник процесора:</dfn> Intel i9</li>
+          <li><cite>Тактова частота</cite>: <code>5.2 GHz</code></li>
+          <li>Відеокарта: NVIDIA RTX 4090</li>
+          <li>ОЗП: 32 GB</li>
+          <li>Звукова карта: ASUS Xonar</li>
+          <li>Вінчестер: 2 TB SSD</li>
+        </ul>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <hr width="90%" size="2" align="center">
-    <address style="text-align:center;" dir="ltr">
-      &copy; 2025. Розробила студентка <q>Бацура Богдана</q>
-    </address>
+    <hr>
+    <address>&copy; 2025. Розробила студентка <q>Бацура Богдана</q></address>
   </footer>
+
 </body>
 </html>
