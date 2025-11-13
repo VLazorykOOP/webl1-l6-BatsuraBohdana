@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Бацура Богдана, група 241">
+  <title>Головне Меню - CyberNest</title>
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <link rel="icon" href="logo.jpeg" type="image/jpeg" sizes="180x180">
+</head>
+<body>
+
+  <header>
+    <h1>Меню Проєкту "CyberNest"</h1>
+    <nav>
+      <a href="menu.html" class="active">Головне Меню</a>
+      <a href="author.html">Автор</a>
+      <a href="company.html">Компанія</a>
+      <a href="news.html">Новини</a>
+    </nav>
+  </header>
+
+  <main class="main-menu">
+
+    <section class="page-intro">
+      <h3>Ласкаво просимо до "CyberNest"</h3>
+      <p>Це головна сторінка нашого проєкту. Звідси ви можете перейти до будь-якого розділу сайту, а також ознайомитись з ключовою інформацією про нашу компанію.</p>
+      
+      <a href="#internal-link-target" class="internal-anchor">Дізнатися більше про нас</a>
+    </section>
+
+    <marquee id="promo-marquee" class="promo-banner">
+        *** Увага! Спеціальна пропозиція від CyberNest! Тільки цього тижня знижки на серію CompMaster! ***
+    </marquee>
+
+    <section class="content-lists">
+      <h4 id="internal-link-target">Ключова інформація про компанію</h4>
+
+      <dl id="company-definitions" dir="ltr">
+        <dt class="term-title" id="term-ceo">Генеральний директор (CEO)</dt>
+        <dd>Пані Олена Коваленко</dd>
+        
+        <dt class="term-title" id="term-location">Головний офіс</dt>
+        <dd>м. Київ, вул. Інноваторів, 1</dd>
+      </dl>
+
+      <h5>Наші пріоритети</h5>
+      <ol class="priorities-list" start="5">
+        <li title="Quality first" lang="en">Висока якість компонентів</li>
+        <li title="Customer service">Найкращий клієнтський сервіс</li>
+        <li value="10" title="Innovation" lang="uk">Постійні інновації</li>
+      </ol>
+
+      <h5>Ключові відділи</h5>
+      <ul id="departments-list">
+        <li value="3">Відділ продажів</li> 
+        <li>Технічна підтримка</li>
+        <li>R&D (Дослідження та розробка)</li>
+      </ul>
+
+      <h5>Партнери</h5>
+      <ul title="Our Partners" class="old-projects-dir">
+        <li>Partner A</li>
+        <li>Partner B</li>
+      </ul>
+    </section>
+
+    <section class="additional-info">
+      <h4>Додаткові матеріали та відгуки</h4>
+      
+      <div class="info-columns">
+        
+        <div class="download-link">
+          <p>Хочете ознайомитись з повним асортиментом? Завантажте наш каталог:</p>
+          <a 
+              href="CyberNest_Catalog.pdf" 
+              download="CyberNest_Catalog.pdf"
+              rel="nofollow"
+              target="_blank"
+              accesskey="d"
+              title="Завантажити каталог (accesskey 'd')"
+              class="internal-anchor" 
+          >
+              Завантажити каталог (PDF)
+          </a>
+        </div>
+
+        <div class="review-item">
+          <p>Відгук від нашого клієнта:</p>
+          <blockquote>
+            "Чудовий сервіс! Окреме дякую менеджеру <bdi id="user-bdi">أحمد</bdi> (Ahmed) за допомогу у виборі."
+          </blockquote>
+        </div>
+      </div> 
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025. Розробила студентка Бацура Богдана</p>
+  </footer>
+
+</body>
+</html>
