@@ -1,37 +1,43 @@
- 
 <!DOCTYPE html>
 <html lang="ua">
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="Бацура Богдана, група 241">
   <title>Про автора</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body bgcolor="black" text="white">
+<body>
 
   <header>
-    <h1 style="color:rgb(133, 185, 244);" dir="ltr" align="center">Веб-проєкт: Продаж комп’ютерів</h1>
+    <h1>Веб-проєкт: Продаж комп’ютерів</h1>
     <nav>
-      <a href="author.html">Автор</a> |
-      <a href="company.html">Компанія</a> |
+      <a href="menu.html">Головне Меню</a>
+      <a href="author.html" class="active">Автор</a>
+      <a href="company.html">Компанія</a>
       <a href="news.html">Новини</a>
+        <a href="products.html">Сервіс</a>
     </nav>
-    <hr width="100%" size="3" align="center">
-  </header>
+    </header>
 
   <main>
-    <h3 align="left" style="color:rgb(50, 50, 165);" title="Інформація про автора">Про мене</h3>
-    <p style="font-size:14px;" dir="ltr" align="justify">
-      Мене звати <b>Бацура Богдана</b>, я студентка групи 241.<br title="перенос рядка" class="line1" style="margin:10px;">
-      Цікавлюся програмуванням, веб-розробкою та новітніми технологіями. 
-    </p>
-    <p style="text-align:center;" dir="ltr" align="center">
-      <img src="IMG_3940.jpeg" alt="Фото автора" width="200">
-    </p>
+    <section class="about-author">
+      <h3>Про мене</h3>
+      <div class="info">
+        <p>
+          Мене звати <b>Бацура Богдана</b>, я студентка групи 241.<br>
+          Цікавлюся програмуванням, веб-розробкою та новітніми технологіями.
+        </p>
+        <figure>
+          <img src="IMG_3940.jpeg" alt="Фото автора">
+          <figcaption>Автор сайту</figcaption>
+        </figure>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <hr width="90%" size="2" align="center">
-    <p style="text-align:center;" dir="ltr" align="center">&copy; 2025. Розробила студентка Бацура Богдана</p>
+    <p>&copy; 2025. Розробила студентка Бацура Богдана</p>
   </footer>
+
 </body>
 </html>
