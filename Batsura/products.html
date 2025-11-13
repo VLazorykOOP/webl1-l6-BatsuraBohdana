@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Бацура Богдана, група 241">
+  <title>Сервісний Центр - CyberNest</title>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1 class="lab5-header-main">Сервісний Центр CyberNest<sup>TM</sup></h1>
+    <nav>
+      <a href="menu.html">Головне Меню</a>
+      <a href="author.html">Автор</a>
+      <a href="company.html">Компанія</a>
+      <a href="news.html">Новини</a>
+      <a href="service.html" class="active">Сервіс</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-intro lab5-text-properties">
+      <h3>Заявка на обслуговування</h3>
+      <p>
+        Виникли проблеми з вашим ПК? Заповніть форму, і наші спеціалісти
+        зв'яжуться з вами. Ми дбаємо про <code>orphans</code> та <code>widows</code> у цьому
+        тексті, щоб він виглядав професійно.
+      </p>
+    </section>
+
+    <form id="serviceForm" class="product-form" action="#">
+      
+      <fieldset class="form-group">
+        <legend class="lab5-small-caps">Контактна інформація</legend>
+        
+        <label for="name">Ваше ім'я:</label>
+        <input type="text" id="name" name="customer_name" required>
+
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="customer_phone" required>
+        
+        <label for="email">Електронна пошта (Необов'язково):</label>
+        <input type="email" id="email" name="customer_email">
+      </fieldset>
+
+      <fieldset class="form-group">
+        <legend class="lab5-small-caps">Деталі заявки</legend>
+
+        <label for="serviceType">Оберіть тип послуги (як "Оберіть Тариф"):</label>
+        <select id="serviceType" name="service_type">
+          <option value="">-- Оберіть --</option>
+          <option value="diagnostics">Діагностика</option>
+          <option value="upgrade">Апгрейд (заміна компонентів)</option>
+          <option value="repair">Ремонт</option>
+          <option value="cleaning">Чистка та обслуговування</option>
+        </select>
+
+        <details class="form-details">
+          <summary>Опишіть проблему (натисніть, щоб розгорнути)</summary>
+          <label for="comment" class="lab5-cursive-label">Коментар:</label>
+          <textarea id="comment" name="comment" rows="5" class="lab5-pre-text" placeholder="Текст тут поважає
+          переноси рядків
+          завдяки 'white-space: pre'"></textarea>
+        </details>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <legend class="lab5-small-caps">Індикатори (Завдання Lab 5)</legend>
+
+        <label for="urgency">Терміновість (від 0 до 100):</label>
+        <input type="range" id="urgency" name="urgency" min="0" max="100" value="50">
+
+        <label>Рівень терміновості:</label>
+        <meter id="urgencyMeter" min="0" max="100" value="50" low="30" high="70" optimum="10" title="Рівень терміновості"></meter>
+
+        <p class="lab5-output-label">
+          Обране значення: 
+          <output for="urgency" id="urgencyOutput">50</output>
+        </p>
+
+        <label for="formProgress">Заповнення форми:</label>
+        <progress id="formProgress" max="100" value="0" title="Прогрес заповнення"></progress>
+      </fieldset>
+
+      <div class="form-buttons">
+        <input type="submit" value="Надіслати Заявку">
+        <input type="reset" value="Очистити" class="button-secondary">
+      </div>
+    </form>
+    
+  </main>
+
+  <footer>
+    <p>&copy; 2025. Розробила студентка Бацура Богдана</p>
+  </footer>
+
+  <script src="service-script.js"></script>
+
+</body>
+</html>
