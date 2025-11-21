@@ -1,37 +1,118 @@
 <!DOCTYPE html>
 <html lang="ua">
 <head>
-
+    <meta charset="UTF-8">
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #f0f0f0;
         }
         svg {
             border: 1px solid #ccc;
             margin-top: 20px;
             background-color: white; 
         }
+        h1 {
+            color: #333;
+        }
     </style>
 </head>
 <body>
+
+
 
 <svg width="800" height="600" viewBox="-4 -4 10 8" xmlns="http://www.w3.org/2000/svg">
 
 <rect x="-4" y="-4" width="10" height="8" fill="white" />
 
 <g transform="scale(1, -1)">
-<g stroke='black' stroke-width='0.04' fill="blue">
-<circle cx="1.5" cy="2.5" r="0.5" opacity="1"/>
-<circle cx="4.5" cy="2.5" r="0.5" opacity="1"/>
-<rect x="0" y="1" width="1" height="1" opacity="1"/>
-<rect x="5" y="1" width="1" height="1" opacity="1"/>
-<ellipse cx="3" cy="1" rx="2" ry="1" opacity="1"/>
 
-<rect x="1" y="-2" width="1" height="1" opacity="1"/>
-<rect x="4" y="-2" width="1" height="1" opacity="1"/>
-<rect x="2" y="-1" width="2" height="1" opacity="1"/>
-</g>
+<circle cx="1.5" cy="2.5" r="0.5" stroke='black' stroke-width='0.04' fill="blue">
+    <animateTransform 
+        attributeName="transform"
+        attributeType="XML"
+        type="rotate"
+        from="0 1.5 2.5"
+        to="360 1.5 2.5"
+        dur="4s"
+        repeatCount="indefinite"/>
+</circle>
+<circle cx="4.5" cy="2.5" r="0.5" stroke='black' stroke-width='0.04' fill="blue">
+    <animateTransform 
+        attributeName="transform"
+        attributeType="XML"
+        type="rotate"
+        from="0 4.5 2.5"
+        to="-360 4.5 2.5"
+        dur="4s"
+        repeatCount="indefinite"/>
+</circle>
+
+<rect x="0" y="1" width="1" height="1" stroke='black' stroke-width='0.04' fill="blue">
+    <animate 
+        attributeName="fill"
+        values="blue; red; blue"
+        keyTimes="0; 0.5; 1"
+        dur="3s"
+        repeatCount="indefinite"/>
+</rect>
+<rect x="5" y="1" width="1" height="1" stroke='black' stroke-width='0.04' fill="blue">
+    <animate 
+        attributeName="fill"
+        values="blue; red; blue"
+        keyTimes="0; 0.5; 1"
+        dur="3s"
+        repeatCount="indefinite"/>
+</rect>
+
+<ellipse id="arc-path" cx="3" cy="1" rx="2" ry="1" stroke='black' stroke-width='0.04' fill="blue">
+    <animateTransform
+        attributeName="transform"
+        attributeType="XML"
+        type="translate"
+        from="0 0"
+        to="0 0.5" 
+        dur="2s"
+        additive="sum"
+        repeatCount="indefinite"
+        keyTimes="0; 0.5; 1"
+        values="0 0; 0 0.5; 0 0"/>
+</ellipse>
+
+<rect x="1" y="-2" width="1" height="1" stroke='black' stroke-width='0.04' fill="blue">
+    <animate 
+        attributeName="height"
+        values="1; 1.5; 1"
+        keyTimes="0; 0.5; 1"
+        dur="2s"
+        repeatCount="indefinite"/>
+    <animate 
+        attributeName="y"
+        values="-2; -2.5; -2"
+        keyTimes="0; 0.5; 1"
+        dur="2s"
+        repeatCount="indefinite"/>
+</rect>
+
+<rect x="4" y="-2" width="1" height="1" stroke='black' stroke-width='0.04' fill="blue">
+    <animate 
+        attributeName="height"
+        values="1; 1.5; 1"
+        keyTimes="0; 0.5; 1"
+        dur="2s"
+        repeatCount="indefinite"/>
+    <animate 
+        attributeName="y"
+        values="-2; -2.5; -2"
+        keyTimes="0; 0.5; 1"
+        dur="2s"
+        repeatCount="indefinite"/>
+</rect>
+
+<rect x="2" y="-1" width="2" height="1" stroke='black' stroke-width='0.04' fill="blue"/>
+
+
 
 <g stroke="black" stroke-width="0.05">
 <line x1="-3.5" y1="0" x2="5.5" y2="0" />
@@ -84,3 +165,6 @@
 
 </g>
 </svg>
+
+</body>
+</html>
