@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f8fa;
+            color: #333;
+        }
+        #drawingCanvas {
+            border: 1px dashed ; 
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            color: #49a0b2;
+        }
+        #transform-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #49a0b2; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+        #transform-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Геометричні фігури з анімацією (Растрова графіка Canvas)</h1>
+<p>Натисніть кнопку, щоб перемістити еліпс.</p>
+
+<button id="transform-button">Перемістити</button>
+
+<canvas id="drawingCanvas" width="800" height="600"></canvas>
+
+<script>
+    const button = document.getElementById('transform-button');
+    const canvas = document.getElementById('drawingCanvas');
+    const context = canvas.getContext('2d');
+
+    let isMoved = false;
+    let time = 0;
+    let ellipseMoveX = 0; // Зміщення еліпса при натисканні кнопки
+
+    // Параметри масштабування SVG (використовуються для перетворення координат)
+    const scaleFactor = Math.min(canvas.width / 10, canvas.height / 8); 
+
+    function toCanvasX(svgX) { return (svgX - (-4)) * scaleFactor; }
+    function toCanvasY(svgY) { return canvas.height - (svgY - (-4)) * scaleFactor; }
+    function toCanvasLength(svgLen) { return svgLen * scaleFactor; }
+
+    // Обробник події для кнопки
+    button.addEventListener('click', () => {
+        if (!isMoved) {
+            ellipseMoveX = toCanvasLength(1); 
+            button.textContent = 'Повернути Еліпс';
+        } else {
+            ellipseMoveX = 0;
+            button.textContent = 'Перемістити Еліпс';
+        }
+        isMoved = !isMoved;
+    });
+
+    function draw() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = 'white';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.save(); 
+        
+        // ==============================================================
+        // 1. Створення Градієнтів (як у SVG-коді)
+        // ==============================================================
+
+    const yellowBlueGradient = context.createLinearGradient(
+    toCanvasX(-2), 
+    toCanvasY(2),  
+    toCanvasX(4),  
+    toCanvasY(-2)  
+    );
+        yellowBlueGradient.addColorStop(0, '#FF00FF'); 
+        yellowBlueGradient.addColorStop(1, '#00FFFF'); 
+        
+        // Радіальний Градієнт для першого кола 
+        const redTransparentGradient = context.createRadialGradient(
+            toCanvasX(1.5), toCanvasY(2.5), 0, toCanvasX(1.5), toCanvasY(2.5), toCanvasLength(0.5)
+        ); 
+        redTransparentGradient.addColorStop(0, '#FF6347');
+        redTransparentGradient.addColorStop(1, 'rgba(255, 0, 0, 0.4)');
+
+        // Анімований Градієнт для Верхніх Прямокутників 
+        const rectAnimValue = Math.abs(Math.sin(time * 0.5));
+        const rectAnimColor = `rgb(255, ${Math.floor(rectAnimValue * 153)}, 0)`; 
+        const gRectAnimSynchronized = context.createLinearGradient(0, toCanvasY(2), 0, toCanvasY(1));
+        gRectAnimSynchronized.addColorStop(0, rectAnimColor);
+        gRectAnimSynchronized.addColorStop(1, rectAnimColor.replace('rgb', 'rgba').replace(')', ', 0.5)'));
+
+        // Градієнт для Еліпса 
+        const gEllipse = context.createLinearGradient(toCanvasX(1), toCanvasY(1), toCanvasX(5), toCanvasY(1));
+        gEllipse.addColorStop(0, '#FFFF00');
+        gEllipse.addColorStop(1, '#9ACD32');
+
+        // Градієнт для Прямокутників зі зміною висоти 
+        const gRectHeight = context.createLinearGradient(0, toCanvasY(-1), 0, toCanvasY(-2));
+        gRectHeight.addColorStop(0, '#90EE90');
+        gRectHeight.addColorStop(1, '#20B2AA');
+
+        // Градієнт для Статичного прямокутника (Золотисто-жовтий)
+        const gStaticRect = context.createLinearGradient(toCanvasX(2), 0, toCanvasX(4), 0);
+        gStaticRect.addColorStop(0, '#FFD700');
+        gStaticRect.addColorStop(1, 'rgba(255, 215, 0, 0.6)');
+
+
+        // ==============================================================
+        // 2. Малювання Фігур
+        // ==============================================================
+
+        const strokeStyle = '#38761D'; 
+        const lineWidth = toCanvasLength(0.08);
+        context.lineWidth = lineWidth;
+        context.strokeStyle = strokeStyle;
+        
+        // --- 1. Коло 1 
+        context.save();
+        const circle1X = toCanvasX(1.5);
+        const circle1Y = toCanvasY(2.5);
+        context.translate(circle1X, circle1Y);
+        context.rotate(time * 0.5); 
+        context.translate(-circle1X, -circle1Y);
+        context.beginPath();
+        context.arc(circle1X, circle1Y, toCanvasLength(0.5), 0, Math.PI * 2);
+        context.fillStyle = redTransparentGradient; 
+        context.fill();
+        context.stroke();
+        context.restore();
+
+        // --- 2. Коло 2 
+        context.save();
+        const circle2X = toCanvasX(4.5);
+        const circle2Y = toCanvasY(2.5);
+        context.translate(circle2X, circle2Y);
+        context.rotate(-time * 0.5); 
+        context.translate(-circle2X, -circle2Y);
+        context.beginPath();
+        context.arc(circle2X, circle2Y, toCanvasLength(0.5), 0, Math.PI * 2);
+        context.fillStyle = yellowBlueGradient; 
+        context.fill();
+        context.stroke();
+        context.restore();
+
+        // --- 3 & 4. Прямокутники 1 & 2 
+        context.fillStyle = gRectAnimSynchronized; 
+        context.globalAlpha = 0.8;
+        // Rect 1
+        context.beginPath();
+        context.rect(toCanvasX(0), toCanvasY(2), toCanvasLength(1), toCanvasLength(1)); 
+        context.fill();
+        context.stroke();
+        // Rect 2
+        context.beginPath();
+        context.rect(toCanvasX(5), toCanvasY(2), toCanvasLength(1), toCanvasLength(1));
+        context.fill();
+        context.stroke();
+        context.globalAlpha = 1;
+
+        // --- 5. Еліпс 
+        context.save();
+        const ellipseX = toCanvasX(3) + ellipseMoveX; 
+        let ellipseYAnimOffset = Math.sin(time * 0.7) * toCanvasLength(0.25); 
+        const ellipseY = toCanvasY(1) + ellipseYAnimOffset; 
+        context.beginPath();
+        context.ellipse(ellipseX, ellipseY, toCanvasLength(2), toCanvasLength(1), 0, 0, Math.PI * 2);
+        context.fillStyle = gEllipse;
+        context.globalAlpha = 0.7;
+        context.fill();
+        context.stroke();
+        context.globalAlpha = 1;
+        context.restore();
+
+        // --- 6 & 7. Прямокутники зі зміною висоти ---
+        context.fillStyle = gRectHeight;
+        let rectHeight = toCanvasLength(1 + Math.abs(Math.sin(time * 0.7)) * 0.5);
+        
+        // Rect 3
+        context.beginPath();
+        context.rect(toCanvasX(1), toCanvasY(-1) - (rectHeight - toCanvasLength(1)), toCanvasLength(1), rectHeight); 
+        context.fill();
+        context.stroke();
+
+        // Rect 4
+        context.beginPath();
+        context.rect(toCanvasX(4), toCanvasY(-1) - (rectHeight - toCanvasLength(1)), toCanvasLength(1), rectHeight); 
+        context.fill();
+        context.stroke();
+        
+        // --- 8. Статичний прямокутник ---
+        context.beginPath();
+        context.rect(toCanvasX(2), toCanvasY(-1) - toCanvasLength(1), toCanvasLength(2), toCanvasLength(1)); 
+        context.fillStyle = gStaticRect;
+        context.globalAlpha = 0.6;
+        context.fill();
+        context.stroke();
+        context.globalAlpha = 1;
+        
+        // ==============================================================
+        // 3. Малювання Координатної системи (Осі та Мітки)
+        // ==============================================================
+        context.strokeStyle = 'black';
+        context.lineWidth = toCanvasLength(0.05);
+        context.font = `${toCanvasLength(0.3)}px Arial, sans-serif`;
+        context.fillStyle = 'black';
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        
+        // Вісь X та Y (код ідентичний попередньому)
+        context.beginPath(); context.moveTo(toCanvasX(-3.5), toCanvasY(0)); context.lineTo(toCanvasX(5.5), toCanvasY(0)); context.stroke();
+        context.beginPath(); context.moveTo(toCanvasX(5.5), toCanvasY(0)); context.lineTo(toCanvasX(5.3), toCanvasY(0.1)); context.moveTo(toCanvasX(5.5), toCanvasY(0)); context.lineTo(toCanvasX(5.3), toCanvasY(-0.1)); context.stroke();
+        context.beginPath(); context.moveTo(toCanvasX(0), toCanvasY(-3.5)); context.lineTo(toCanvasX(0), toCanvasY(3)); context.stroke();
+        context.beginPath(); context.moveTo(toCanvasX(0), toCanvasY(3)); context.lineTo(toCanvasX(0.1), toCanvasY(2.8)); context.moveTo(toCanvasX(0), toCanvasY(3)); context.lineTo(toCanvasX(-0.1), toCanvasY(2.8)); context.stroke();
+
+        // Мітки
+        for (let i = -3; i <= 5; i++) { if (i !== 0) { context.fillText(i, toCanvasX(i), toCanvasY(0) + toCanvasLength(0.4)); } }
+        for (let i = -3; i <= 2; i++) { if (i !== 0) { context.fillText(i, toCanvasX(0) - toCanvasLength(0.3), toCanvasY(i)); } }
+        context.fillText('X', toCanvasX(5.8), toCanvasY(0)); context.fillText('Y', toCanvasX(0), toCanvasY(3.3)); context.fillText('0', toCanvasX(0), toCanvasY(0) + toCanvasLength(0.4));
+        
+        context.restore(); 
+
+        time += 0.03; 
+        requestAnimationFrame(draw); 
+    }
+
+    requestAnimationFrame(draw);
+
+</script>
+
+</body>
+</html>
